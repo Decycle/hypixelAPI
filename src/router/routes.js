@@ -7,7 +7,7 @@ const routes = [
       {
         path: 'players',
         component: () =>
-          import('src/pages/PlayerCards.vue'),
+          import('src/pages/PlayerListPage.vue'),
       },
     ],
   },

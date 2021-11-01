@@ -25,6 +25,7 @@ import { date } from 'quasar'
 import { computed, toRefs } from 'vue'
 
 export default {
+  name: 'PlayerHypixelCard',
   props: {
     hypixel: {
       type: Object,

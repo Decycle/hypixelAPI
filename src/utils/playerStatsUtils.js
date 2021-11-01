@@ -27,7 +27,7 @@ export const getPlayerServerStats = async (uuid, type) => {
   } catch (err) {
     Notify.create({
       type: 'negative',
-      message: `Player <strong>${username}</strong> not found in hypixel server`,
+      message: `Player <strong>${uuid}</strong> not found in hypixel server`,
       html: true,
     })
   }

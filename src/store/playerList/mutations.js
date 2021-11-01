@@ -1,28 +1,30 @@
 import { LocalStorage } from 'quasar'
 
-const storeUUIDs = players => {
-  LocalStorage.set(
-    'playerUUIDs',
-    players.map(player => player.uuid)
+const storeUUIDs = store => {
+  store.playerUUIDs = store.players.map(
+    player => player.uuid
   )
+  LocalStorage.set('playerUUIDs', store.playerUUIDs)
 }
 
-export const setPlayers = (state, players) => {
-  state.players = players
-  storeUUIDs(state.players)
+export const setPlayers = (store, { players }) => {
+  store.players = players
+  storeUUIDs(store)
 }
 
-export const addPlayer = (state, player) => {
-  state.players.unshift(player)
-  storeUUIDs(state.players)
+export const addPlayer = (store, { player, index }) => {
+  if (typeof index === 'number') {
+    store.players[index] = player
+  } else {
+    store.players.unshift(player)
+  }
+  storeUUIDs(store)
 }
 
-export const removePlayer = (state, uuid) => {
-  state.players.splice(
-    state.players.findIndex(p => p.uuid === uuid),
+export const removePlayer = (store, { uuid }) => {
+  store.players.splice(
+    store.players.findIndex(p => p.uuid === uuid),
     1
   )
-  storeUUIDs(state.players)
+  storeUUIDs(store)
 }
-
-export const addPlayerSorted = (state, player) => {}

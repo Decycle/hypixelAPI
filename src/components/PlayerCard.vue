@@ -123,7 +123,9 @@ export default defineComponent({
     }
 
     const deleteCard = () => {
-      $store.commit('playerList/removePlayer', player.uuid)
+      $store.commit('playerList/removePlayer', {
+        uuid: player.value.uuid,
+      })
     }
 
     return {
